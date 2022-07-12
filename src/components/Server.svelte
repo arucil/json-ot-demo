@@ -73,7 +73,8 @@
             clientId: msg.clientId,
             msgId: msg.msgId,
             type: "batch-op",
-            lastRev: msg.endRev,
+            startRev: msg.startRev,
+            endRev: msg.endRev,
             ops: opHistory.slice(msg.startRev, msg.endRev),
           });
         } else {
@@ -81,7 +82,8 @@
             clientId: msg.clientId,
             msgId: msg.msgId,
             type: "batch-op",
-            lastRev: baseRev,
+            startRev: msg.startRev,
+            endRev: msg.endRev,
             ops: opHistory.slice(msg.startRev),
           });
         }

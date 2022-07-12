@@ -6,6 +6,15 @@ export type OpMsg = {
   jsonOp: Operation
 }
 
+export type BatchOpMessage = {
+  clientId: string,
+  msgId: string,
+  type: 'batch-op',
+  startRev: number
+  endRev: number
+  ops: OpMsg[]
+}
+
 export type ServerMessage = {
   type: 'init'
   baseRev: number
@@ -14,13 +23,7 @@ export type ServerMessage = {
   type: 'operation',
   newRev: number,
   op: OpMsg
-} | {
-  clientId: string,
-  msgId: string,
-  type: 'batch-op',
-  lastRev: number
-  ops: OpMsg[]
-}
+} | BatchOpMessage
 
 export type ClientMessage = {
   type: 'operation',
